@@ -10,6 +10,9 @@
     width: 50%;
     height: 100%;
 } */
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
 .box{
     border: 1px solid black;
     padding: 5px;
@@ -65,4 +68,26 @@
     background-color: green;
     height: 100%;
     width: 100%;
+}
+.game-over{
+    background-image: url(https://www.jglm.org/wp-content/uploads/2015/04/afterlife.jpg);
+height: 100vh;
+background-repeat: no-repeat;
+background-size: cover;
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+.res{
+    clip-path: polygon(0 25%, 50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%);
+background-color: transparent;
+width: 70px;
+height: 70px;
+border: none;
+color: wheat;
+}
+.res:hover{
+    background-color: rgba(236, 220, 127, 0.658);
+
 }

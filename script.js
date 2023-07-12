@@ -10,7 +10,7 @@
 
 // }
 
-
+const mega = document.querySelector('.mega')
 const btn = document.querySelector('.attack')
 const player = document.querySelector('.player-hp')
 const enemy = document.querySelector('.enemy-hp')
@@ -24,67 +24,110 @@ const enemies = ['https://i.pinimg.com/originals/29/32/e1/2932e1668db1bbccc0e4d1
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHI1119aiQZ9c-NEReZxjhhkTz-fA5EJ5IK8iCVkTUVw9JKkpRElcpC8ESuqOejkIhXnQ&usqp=CAU']
 const potionBtn = document.querySelector('.potion')
 const goldElement = document.querySelector('.gold')
-let monsterIndex = 0
-let gold = 0
+const gameOver = document.querySelector('.over')
+const game = document.querySelector('.game-container')
+const res = document.querySelector('.res')
 
 
 
-btn.onclick = () => { attack() }
+function init(){
 
+  gameOver.style.display = 'none'
 
-let playerHp = 100;
-let monsterHp = 100;
-
-function attack() {
-  const rnd = num => Math.round(Math.random()*num)
-
-  let playerDamage = Math.random().toFixed(1) * 50
-  let monsterDamage = Math.random().toFixed(1) * 8
-  let hit = Math.random().toFixed(1) * 5
-
-
-  gold += hit
-
-
-
-
-
-  goldElement.textContent = `Gold: ${gold} `
-
-  monsterHp -= playerDamage
-  playerHp -= monsterDamage
-
-  player.style.width = playerHp + "%"
-  enemy.style.width = monsterHp + "%"
-
-  playerInfo.textContent = `Player HP: ${playerHp.toFixed(1)}`
-  monsterInfo.textContent = `Monster HP: ${monsterHp.toFixed(1)}`
-
-  console.log('player hp: ' + playerHp + ' dmg: ' + playerDamage)
-  console.log('monster hp: ' + monsterHp + ' dmg: ' + monsterDamage)
-
-  potionBtn.onclick = () => {
-    if (gold >= 50) {
-      gold -= 50
-      playerHp = 100
-      player.style.width = playerHp + "%"
+  let monsterIndex = 0
+  let gold = 0
+  
+  
+  
+  btn.onclick = () => { attack() }
+  
+  
+  let playerHp = 100;
+  let monsterHp = 100;
+  
+  function attack() {
+    const rnd = num => Math.round(Math.random()*num)
+  
+    let playerDamage = rnd(50)
+    let monsterDamage = rnd(8)
+    let hit = rnd(5)
+  
+  
+    gold += hit
+  
+  
+  
+  
+  
+    goldElement.textContent = `Gold: ${gold} `
+  
+    monsterHp -= playerDamage
+    playerHp -= monsterDamage
+  
+    player.style.width = playerHp + "%"
+    enemy.style.width = monsterHp + "%"
+  
+    playerInfo.textContent = `Player HP: ${playerHp.toFixed(1)}`
+    monsterInfo.textContent = `Monster HP: ${monsterHp.toFixed(1)}`
+  
+    console.log('player hp: ' + playerHp + ' dmg: ' + playerDamage)
+    console.log('monster hp: ' + monsterHp + ' dmg: ' + monsterDamage)
+  
+    potionBtn.onclick = () => {
+      if (gold >= 50) {
+        gold -= 50
+        playerHp = 100
+        player.style.width = playerHp + "%"
+      }
+  
+      goldElement.textContent = `Gold: ${gold} `
+  
+    }
+    if (monsterHp <= 0) {
+      monsterHp = 100
+      enemyImg.src = enemies[rnd(enemies.length - 1)]
+      console.log(enemyImg)
+      enemy.style.width = monsterHp + "%"
     }
 
-    goldElement.textContent = `Gold: ${gold} `
+    if (playerHp <= 0){
+      game.style.display = 'none'
+      gameOver.style.display = 'block'
+    }else {
+     
+      gameOver.style.display = 'none'
+    }
 
-  }
-  if (monsterHp <= 0) {
+
+  res.onclick = () => {
+    playerHp = 100
+    player.style.width = playerHp + "%"
+  
     monsterHp = 100
-    enemyImg.src = enemies[rnd(enemies.length - 1)]
-    console.log(enemyImg)
     enemy.style.width = monsterHp + "%"
+  
+    gold = 0
+    monsterIndex = 0
+  
+    gameOver.style.display = 'none'
+   game.style.display = 'flex'
+  
   }
-  // if (monsterHp <= 0) {
-  //   monsterIndex++
 
-  //   monsterHp = 100;
-  //  console.log(monsterIndex)
-  // }
+
+
+  console.log(res)
+  
+    // if (monsterHp <= 0) {
+    //   monsterIndex++
+  
+    //   monsterHp = 100;
+    //  console.log(monsterIndex)
+    // }
+  }
+  
+  
 }
 
+init()
 
