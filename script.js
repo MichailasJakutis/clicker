@@ -24,6 +24,7 @@ const enemies = ['https://i.pinimg.com/originals/29/32/e1/2932e1668db1bbccc0e4d1
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHI1119aiQZ9c-NEReZxjhhkTz-fA5EJ5IK8iCVkTUVw9JKkpRElcpC8ESuqOejkIhXnQ&usqp=CAU']
 const potionBtn = document.querySelector('.potion')
 const goldElement = document.querySelector('.gold')
+const indexElement = document.querySelector('.monster-index')
 const gameOver = document.querySelector('.over')
 const game = document.querySelector('.game-container')
 const res = document.querySelector('.res')
@@ -78,24 +79,24 @@ function init(){
         gold -= 50
         playerHp = 100
         player.style.width = playerHp + "%"
+        goldElement.textContent = `Gold: ${gold} `
       }
   
-      goldElement.textContent = `Gold: ${gold} `
+     
   
     }
     if (monsterHp <= 0) {
       monsterHp = 100
+      enemy.style.width = monsterHp + "%"
       enemyImg.src = enemies[rnd(enemies.length - 1)]
       console.log(enemyImg)
-      enemy.style.width = monsterHp + "%"
+      monsterIndex++
+      indexElement.textContent = `Monsters killed: ${monsterIndex}`
     }
 
     if (playerHp <= 0){
       game.style.display = 'none'
       gameOver.style.display = 'block'
-    }else {
-     
-      gameOver.style.display = 'none'
     }
 
 
@@ -107,7 +108,10 @@ function init(){
     enemy.style.width = monsterHp + "%"
   
     gold = 0
+    goldElement.textContent = `Gold: ${gold} `
+
     monsterIndex = 0
+    indexElement.textContent = `Monsters killed: ${monsterIndex}`
   
     gameOver.style.display = 'none'
    game.style.display = 'flex'
