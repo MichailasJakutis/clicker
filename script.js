@@ -31,6 +31,7 @@ const res = document.querySelector('.res')
 const swordElement = document.querySelector('.sword')
 const bowElement = document.querySelector('.bow')
 const staffElement = document.querySelector('.staff')
+const weapons = document.querySelectorAll('.weapon-size')
 
 
 
@@ -43,9 +44,20 @@ const staffElement = document.querySelector('.staff')
   let playerHp = 100;
   let monsterHp = 100;
   
+  let weaponSelected
+  let maxPlayerDamageOnAttack = 10;
+  let maxMonsterDamageOnAttack = 20;
+  swordElement.style.backgroundColor = 'gray'
+  bowElement.style.backgroundColor = 'transparent'
+  staffElement.style.backgroundColor = 'transparent'
+ 
+
+ 
   btn.onclick = () => { 
-    const rnd = num => Math.round(Math.random() * num)
     
+    const rnd = num => Math.round(Math.random() * num)
+    const countProbability = (value) => rnd(100) < value
+
     let playerDamage = rnd(50)
     let monsterDamage = rnd(8)
     gold += rnd(5)
@@ -61,9 +73,8 @@ const staffElement = document.querySelector('.staff')
     playerInfo.textContent = `Player HP: ${playerHp.toFixed(1)}`
     monsterInfo.textContent = `Monster HP: ${monsterHp.toFixed(1)}`
   
-    console.log('player hp: ' + playerHp + ' dmg: ' + playerDamage)
-    console.log('monster hp: ' + monsterHp + ' dmg: ' + monsterDamage)
-  
+    // console.log('player hp: ' + playerHp + ' dmg: ' + playerDamage)
+    // console.log('monster hp: ' + monsterHp + ' dmg: ' + monsterDamage)
   
 
     if (playerHp <= 0) {
@@ -79,11 +90,50 @@ const staffElement = document.querySelector('.staff')
     }
 
 
-
-
+    let damageToEnemy = rnd(maxMonsterDamageOnAttack);
+   let damageToPlayer = rnd(maxPlayerDamageOnAttack)
+   switch (weaponSelected) {
+    case 0: {
+      if (countProbability(25)) {
+        damageToPlayer = 0
+        console.log('Attack dodged')
+      }
+    }
+      break
+    case 1: {
+      if (countProbability(30)) {
+        damageToEnemy *= 2
+        console.log('Damage doubled')
+      }
+      break;
+    }
+    case 2: {
+      if (countProbability(40)) {
+        playerHp += rnd(7)
+        if (playerHp > 100) playerHp = 100
+        console.log('player healed')
+        }
+      }
+    }
+     weapons.forEach((weapon) => {
+       weapon.onclick = (e) => {
+       selectWeapon(e.target)
+        }
+      })
    }
-
     
+  function selectWeapon(value) {
+    weapons.forEach((weapon, index) => {
+      if (weapon === value) {
+        weaponSelected = index;
+        weapon.style.backgroundColor = 'gray';
+      } else {
+        weapon.style.backgroundColor = 'transparent';
+      }
+    })
+  
+  }
+
    res.onclick = () => {
     playerHp = 100
     player.style.width = playerHp + "%"
@@ -110,41 +160,7 @@ const staffElement = document.querySelector('.staff')
     }
   }
 
-  
-
- 
-
-
-
-
-
-
-
-    // swordElement.addEventListener('click', (event) => {
-    //   if (event.code === 'click') {
-    //     if (Math.random() < 0.25) {
-    //       console.log('Išvengėte smūgio!');
-    //     } else {
-    //       console.log('Gavote smūgį!');
-    //     }
-    //   }
-    //   swordElement.style.backgroundColor = 'gray'
-    //   staffElement.style.backgroundColor = 'transparent'
-    //   bowElement.style.backgroundColor = 'transparent'
-
-    // })
-    // bowElement.addEventListener('click', (bow) => {
-    //   bowElement.style.backgroundColor = 'gray'
-    //   swordElement.style.backgroundColor = 'transparent'
-    //   staffElement.style.backgroundColor = 'transparent'
-    // })
-    // staffElement.addEventListener('click', (staff) => {
-    //   staffElement.style.backgroundColor = 'gray'
-    //   bowElement.style.backgroundColor = 'transparent'
-    //   swordElement.style.backgroundColor = 'transparent'
-    // })
    
-  
 
 
 
@@ -157,19 +173,4 @@ const staffElement = document.querySelector('.staff')
 
 
 
-
-
-
-
-
-
-// document.addEventListener('keydown', function(event) {
-//   if (event.code === 'KeyS') {
-//     if (Math.random() < 0.25) {
-//       console.log('Išvengėte smūgio!');
-//     } else {
-//       console.log('Gavote smūgį!');
-//     }
-//   }
-// });
 

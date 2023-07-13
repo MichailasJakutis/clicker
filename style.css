@@ -101,4 +101,5 @@ color: wheat;
 }
 .weapon-size{
     height: 70px;
+    cursor: pointer;
 }
