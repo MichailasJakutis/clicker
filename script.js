@@ -28,110 +28,148 @@ const indexElement = document.querySelector('.monster-index')
 const gameOver = document.querySelector('.over')
 const game = document.querySelector('.game-container')
 const res = document.querySelector('.res')
+const swordElement = document.querySelector('.sword')
+const bowElement = document.querySelector('.bow')
+const staffElement = document.querySelector('.staff')
 
 
 
-function init(){
+
 
   gameOver.style.display = 'none'
 
   let monsterIndex = 0
   let gold = 0
-  
-  
-  
-  btn.onclick = () => { attack() }
-  
-  
   let playerHp = 100;
   let monsterHp = 100;
   
-  function attack() {
-    const rnd = num => Math.round(Math.random()*num)
-  
+  btn.onclick = () => { 
+    const rnd = num => Math.round(Math.random() * num)
+    
     let playerDamage = rnd(50)
     let monsterDamage = rnd(8)
-    let hit = rnd(5)
-  
-  
-    gold += hit
-  
-  
-  
-  
-  
-    goldElement.textContent = `Gold: ${gold} `
-  
-    monsterHp -= playerDamage
+    gold += rnd(5)
+
     playerHp -= monsterDamage
-  
+    monsterHp -= playerDamage
+
+    
     player.style.width = playerHp + "%"
     enemy.style.width = monsterHp + "%"
-  
+    goldElement.textContent = `Gold: ${gold} `
+
     playerInfo.textContent = `Player HP: ${playerHp.toFixed(1)}`
     monsterInfo.textContent = `Monster HP: ${monsterHp.toFixed(1)}`
   
     console.log('player hp: ' + playerHp + ' dmg: ' + playerDamage)
     console.log('monster hp: ' + monsterHp + ' dmg: ' + monsterDamage)
   
-    potionBtn.onclick = () => {
-      if (gold >= 50) {
-        gold -= 50
-        playerHp = 100
-        player.style.width = playerHp + "%"
-        goldElement.textContent = `Gold: ${gold} `
-      }
   
-     
-  
+
+    if (playerHp <= 0) {
+      game.style.display = 'none'
+      gameOver.style.display = 'block'
     }
     if (monsterHp <= 0) {
       monsterHp = 100
       enemy.style.width = monsterHp + "%"
       enemyImg.src = enemies[rnd(enemies.length - 1)]
-      console.log(enemyImg)
       monsterIndex++
       indexElement.textContent = `Monsters killed: ${monsterIndex}`
     }
 
-    if (playerHp <= 0){
-      game.style.display = 'none'
-      gameOver.style.display = 'block'
-    }
 
 
-  res.onclick = () => {
+
+   }
+
+    
+   res.onclick = () => {
     playerHp = 100
     player.style.width = playerHp + "%"
-  
+
     monsterHp = 100
     enemy.style.width = monsterHp + "%"
-  
+
     gold = 0
     goldElement.textContent = `Gold: ${gold} `
 
     monsterIndex = 0
     indexElement.textContent = `Monsters killed: ${monsterIndex}`
-  
+
     gameOver.style.display = 'none'
-   game.style.display = 'flex'
-  
+    game.style.display = 'flex'
+
+  }
+  potionBtn.onclick = () => {
+    if (gold >= 50) {
+      gold -= 50
+      playerHp = 100
+      player.style.width = playerHp + "%"
+      goldElement.textContent = `Gold: ${gold} `
+    }
   }
 
+  
+
+ 
 
 
-  console.log(res)
-  
-    // if (monsterHp <= 0) {
-    //   monsterIndex++
-  
-    //   monsterHp = 100;
-    //  console.log(monsterIndex)
-    // }
-  }
-  
-  
-}
 
-init()
+
+
+
+
+    // swordElement.addEventListener('click', (event) => {
+    //   if (event.code === 'click') {
+    //     if (Math.random() < 0.25) {
+    //       console.log('Išvengėte smūgio!');
+    //     } else {
+    //       console.log('Gavote smūgį!');
+    //     }
+    //   }
+    //   swordElement.style.backgroundColor = 'gray'
+    //   staffElement.style.backgroundColor = 'transparent'
+    //   bowElement.style.backgroundColor = 'transparent'
+
+    // })
+    // bowElement.addEventListener('click', (bow) => {
+    //   bowElement.style.backgroundColor = 'gray'
+    //   swordElement.style.backgroundColor = 'transparent'
+    //   staffElement.style.backgroundColor = 'transparent'
+    // })
+    // staffElement.addEventListener('click', (staff) => {
+    //   staffElement.style.backgroundColor = 'gray'
+    //   bowElement.style.backgroundColor = 'transparent'
+    //   swordElement.style.backgroundColor = 'transparent'
+    // })
+   
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// document.addEventListener('keydown', function(event) {
+//   if (event.code === 'KeyS') {
+//     if (Math.random() < 0.25) {
+//       console.log('Išvengėte smūgio!');
+//     } else {
+//       console.log('Gavote smūgį!');
+//     }
+//   }
+// });
 
