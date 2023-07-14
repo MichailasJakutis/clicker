@@ -110,6 +110,8 @@ const resMonsterIndex = document.querySelector('.res-monster-index')
       enemyImg.src = enemies[rnd(enemies.length - 1)]
       monsterIndex++
       indexElement.textContent = `Monsters: ${monsterIndex}`
+      monsterInfo.textContent = `Monster HP: ${monsterHp.toFixed(1)}`
+
     }
 
 
@@ -162,6 +164,9 @@ const resMonsterIndex = document.querySelector('.res-monster-index')
 
     monsterHp = 100
     enemy.style.width = monsterHp + "%"
+
+    playerInfo.textContent = `Player HP: ${playerHp.toFixed(1)}`
+    monsterInfo.textContent = `Monster HP: ${monsterHp.toFixed(1)}`
 
     gold = 0
     goldElement.textContent = `Gold: ${gold} `
