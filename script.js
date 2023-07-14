@@ -34,7 +34,9 @@ const staffElement = document.querySelector('.staff')
 const weapons = document.querySelectorAll('.weapon-size')
 const xpElement = document.querySelector('.xp')
 const levelElement = document.querySelector('.level')
-
+const resGold = document.querySelector('.res-gold')
+const resLvl = document.querySelector('.res-level')
+const resMonsterIndex = document.querySelector('.res-monster-index')
 
 
   gameOver.style.display = 'none'
@@ -89,6 +91,10 @@ const levelElement = document.querySelector('.level')
     console.log('player hp: ' + playerHp + ' dmg: ' + playerDamage)
     console.log('monster hp: ' + monsterHp + ' dmg: ' + monsterDamage)
   
+
+    resGold.textContent = `Gold: ${gold}`
+    resLvl.textContent = `Level: ${lvl}`
+    resMonsterIndex.textContent = `Monster killed: ${monsterIndex}`
 
     if (playerHp <= 0) {
       game.style.display = 'none'
@@ -146,6 +152,7 @@ const levelElement = document.querySelector('.level')
   }
 
    res.onclick = () => {
+   
     playerHp = 100
     player.style.width = playerHp + "%"
 
