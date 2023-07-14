@@ -21,7 +21,10 @@ const enemies = ['https://i.pinimg.com/originals/29/32/e1/2932e1668db1bbccc0e4d1
   'https://i.pinimg.com/236x/88/d4/11/88d4119fd76ed8feb85c55e573959b4a--monster-art-fantasy-monster.jpg',
   'https://i.pinimg.com/236x/56/dc/47/56dc4781c421ca452d25024919ca046b.jpg',
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT08J8mT5pV2EHHeaSVbHtaVyuuPKxSS-GSgNqUpR2it34lQ6AzXGkqNb3q6tqMENhucj0&usqp=CAU',
-  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHI1119aiQZ9c-NEReZxjhhkTz-fA5EJ5IK8iCVkTUVw9JKkpRElcpC8ESuqOejkIhXnQ&usqp=CAU']
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHI1119aiQZ9c-NEReZxjhhkTz-fA5EJ5IK8iCVkTUVw9JKkpRElcpC8ESuqOejkIhXnQ&usqp=CAU',
+  'https://www.fightersgeneration.com/np5/kof12/ralf-12s.gif',
+  'https://wiki.supercombo.gg/images/b/b5/Chin98_stance.gif',
+  'https://wiki.supercombo.gg/images/d/dd/Shermie98_stance.gif',]
 const potionBtn = document.querySelector('.potion')
 const goldElement = document.querySelector('.gold')
 const indexElement = document.querySelector('.monster-index')
@@ -47,14 +50,15 @@ const resMonsterIndex = document.querySelector('.res-monster-index')
   let monsterHp = 100
   let xp = 0
   let lvl = 0
-  
+  let borderStyle = `solid rgb(248, 218, 46) 2px`
 
   let weaponSelected
   
-  swordElement.style.backgroundColor = 'gray'
-  bowElement.style.backgroundColor = 'transparent'
-  staffElement.style.backgroundColor = 'transparent'
- 
+  swordElement.style.border = borderStyle
+  bowElement.style.border = 'none'
+  staffElement.style.border = 'none'
+  indexElement.textContent = `Monsters: ${monsterIndex}`
+
  
  
   btn.onclick = () => { 
@@ -83,7 +87,7 @@ const resMonsterIndex = document.querySelector('.res-monster-index')
       
     
     levelElement.textContent = `Level: ${lvl}`
-    indexElement.textContent = `Monsters killed: ${monsterIndex}`
+    indexElement.textContent = `Monsters: ${monsterIndex}`
     
     playerInfo.textContent = `Player HP: ${playerHp.toFixed(1)}`
     monsterInfo.textContent = `Monster HP: ${monsterHp.toFixed(1)}`
@@ -105,7 +109,7 @@ const resMonsterIndex = document.querySelector('.res-monster-index')
       enemy.style.width = monsterHp + "%"
       enemyImg.src = enemies[rnd(enemies.length - 1)]
       monsterIndex++
-      indexElement.textContent = `Monsters killed: ${monsterIndex}`
+      indexElement.textContent = `Monsters: ${monsterIndex}`
     }
 
 
@@ -142,10 +146,10 @@ const resMonsterIndex = document.querySelector('.res-monster-index')
   function selectWeapon(value) {
     weapons.forEach((weapon, index) => {
       if (weapon === value) {
-        weaponSelected = index;
-        weapon.style.backgroundColor = 'gray';
+        weaponSelected = index
+        weapon.style.border = borderStyle
       } else {
-        weapon.style.backgroundColor = 'transparent';
+        weapon.style.border = 'none'
       }
     })
   

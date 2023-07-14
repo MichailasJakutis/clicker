@@ -1,15 +1,4 @@
-/* .bar{
-    width: 1000px;
-    height: 20px;
-    background-color: antiquewhite;
-    border: 1px solid black;
-    margin-bottom: 2px;
-}
-.status{
-    background-color: greenyellow;
-    width: 50%;
-    height: 100%;
-} */
+
 *, *::before, *::after {
     box-sizing: border-box;
   }
@@ -20,11 +9,11 @@
     
 }
 .player{
-    height: 250px;
+    height: 300px;
     width: 300px;
 }
 .enemy{
-    height: 250px;
+    height: 300px;
     width: 300px;
 }
 .game-container{
@@ -34,6 +23,8 @@
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+    background-image: url(https://png.pngtree.com/thumb_back/fh260/background/20210320/pngtree-black-yellow-and-bule-versus-battle-fighters-vs-background-image_590756.jpg);
+    background-size: cover;    
 }
 .btn-cont{
     display: flex;
@@ -43,6 +34,7 @@
 }
 .attack{
     box-shadow: 0 2px 5px 2px rgba(0, 0, 0, .1);
+    background-color: rgb(248, 218, 46);
 }
 .attack:hover{
     background-color: red;
@@ -72,7 +64,7 @@
     width: 100%;
 }
 .game-over{
-    background-image: url(https://www.jglm.org/wp-content/uploads/2015/04/afterlife.jpg);
+    background-image: url(https://t4.ftcdn.net/jpg/05/41/32/55/360_F_541325515_e7IBkBDJYDfOjuFGXX6QVFIqKyscW42T.jpg);
 height: 100vh;
 background-repeat: no-repeat;
 background-size: cover;
@@ -85,15 +77,17 @@ flex-direction: column;
 .res{
     clip-path: polygon(0 25%, 50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%);
 background-color: transparent;
-width: 70px;
-height: 70px;
+width: 220px;
+height: 220px;
 border: none;
-color: wheat;
+font-size: 40px;
+color: rgb(214, 83, 66);
+cursor: pointer;
 }
-.res:hover{
-    background-color: rgba(236, 220, 127, 0.658);
+/* .res:hover{
+    background-color: rgba(243, 15, 15, 0.658);
 
-}
+} */
 .weapon-container{
     display: flex;
     flex-wrap: wrap;
@@ -102,6 +96,14 @@ color: wheat;
 .weapon-size{
     height: 70px;
     cursor: pointer;
+    border: solid 2px rgb(248, 218, 46);
+}
+
+.edit{
+    color: rgb(12, 27, 11);
+    font-size: 20px;
+    border: 1px solid white;
+    background-color: rgb(248, 218, 46);
 }
 .xp-container{
     width: 100%;
@@ -112,4 +114,15 @@ color: wheat;
     height: 100%;
     width: 0;
     background-color: blue;
+}
+li{
+    font-size: 40px;
+    color: rgb(148, 35, 35);
+}
+h1{
+    font-size: 50px;
+    color: rgb(196, 35, 35);
+}
+.npc{
+    color: rgb(248, 218, 46)
 }
