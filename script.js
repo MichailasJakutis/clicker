@@ -33,7 +33,7 @@ const bowElement = document.querySelector('.bow')
 const staffElement = document.querySelector('.staff')
 const weapons = document.querySelectorAll('.weapon-size')
 const xpElement = document.querySelector('.xp')
-
+const levelElement = document.querySelector('.level')
 
 
 
@@ -44,7 +44,8 @@ const xpElement = document.querySelector('.xp')
   let playerHp = 100
   let monsterHp = 100
   let xp = 0
-  let xpIndex = 0
+  let lvl = 0
+  
 
   let weaponSelected
   
@@ -52,15 +53,15 @@ const xpElement = document.querySelector('.xp')
   bowElement.style.backgroundColor = 'transparent'
   staffElement.style.backgroundColor = 'transparent'
  
-
+ 
  
   btn.onclick = () => { 
     
     const rnd = num => Math.round(Math.random() * num)
     const countProbability = (value) => rnd(100) < value
 
-    let playerDamage = rnd(1)
-    let monsterDamage = rnd(1)
+    let playerDamage = rnd(10)
+    let monsterDamage = rnd(8)
     gold += rnd(5)
     xp += 10
 
@@ -72,12 +73,16 @@ const xpElement = document.querySelector('.xp')
     enemy.style.width = monsterHp + "%"
     goldElement.textContent = `Gold: ${gold} `
 
-    
+    if (xp == 100){
+      lvl++
+      xp = 0
+      xpElement.style.width = xp + '%'
+    }
       
     
-  
-
-
+    levelElement.textContent = `Level: ${lvl}`
+    indexElement.textContent = `Monsters killed: ${monsterIndex}`
+    
     playerInfo.textContent = `Player HP: ${playerHp.toFixed(1)}`
     monsterInfo.textContent = `Monster HP: ${monsterHp.toFixed(1)}`
   

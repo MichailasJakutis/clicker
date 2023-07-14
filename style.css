@@ -20,11 +20,11 @@
     
 }
 .player{
-    height: 300px;
+    height: 250px;
     width: 300px;
 }
 .enemy{
-    height: 300px;
+    height: 250px;
     width: 300px;
 }
 .game-container{
