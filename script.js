@@ -32,7 +32,7 @@ const swordElement = document.querySelector('.sword')
 const bowElement = document.querySelector('.bow')
 const staffElement = document.querySelector('.staff')
 const weapons = document.querySelectorAll('.weapon-size')
-
+const xpElement = document.querySelector('.xp')
 
 
 
@@ -41,12 +41,13 @@ const weapons = document.querySelectorAll('.weapon-size')
 
   let monsterIndex = 0
   let gold = 0
-  let playerHp = 100;
-  let monsterHp = 100;
-  
+  let playerHp = 100
+  let monsterHp = 100
+  let xp = 0
+  let xpIndex = 0
+
   let weaponSelected
-  let maxPlayerDamageOnAttack = 10;
-  let maxMonsterDamageOnAttack = 20;
+  
   swordElement.style.backgroundColor = 'gray'
   bowElement.style.backgroundColor = 'transparent'
   staffElement.style.backgroundColor = 'transparent'
@@ -58,23 +59,30 @@ const weapons = document.querySelectorAll('.weapon-size')
     const rnd = num => Math.round(Math.random() * num)
     const countProbability = (value) => rnd(100) < value
 
-    let playerDamage = rnd(50)
-    let monsterDamage = rnd(8)
+    let playerDamage = rnd(1)
+    let monsterDamage = rnd(1)
     gold += rnd(5)
+    xp += 10
 
     playerHp -= monsterDamage
     monsterHp -= playerDamage
 
-    
+      xpElement.style.width = xp + '%'
     player.style.width = playerHp + "%"
     enemy.style.width = monsterHp + "%"
     goldElement.textContent = `Gold: ${gold} `
 
+    
+      
+    
+  
+
+
     playerInfo.textContent = `Player HP: ${playerHp.toFixed(1)}`
     monsterInfo.textContent = `Monster HP: ${monsterHp.toFixed(1)}`
   
-    // console.log('player hp: ' + playerHp + ' dmg: ' + playerDamage)
-    // console.log('monster hp: ' + monsterHp + ' dmg: ' + monsterDamage)
+    console.log('player hp: ' + playerHp + ' dmg: ' + playerDamage)
+    console.log('monster hp: ' + monsterHp + ' dmg: ' + monsterDamage)
   
 
     if (playerHp <= 0) {
@@ -90,20 +98,18 @@ const weapons = document.querySelectorAll('.weapon-size')
     }
 
 
-    let damageToEnemy = rnd(maxMonsterDamageOnAttack);
-   let damageToPlayer = rnd(maxPlayerDamageOnAttack)
    switch (weaponSelected) {
     case 0: {
       if (countProbability(25)) {
-        damageToPlayer = 0
+        monsterDamage = 0
         console.log('Attack dodged')
       }
     }
       break
     case 1: {
       if (countProbability(30)) {
-        damageToEnemy *= 2
-        console.log('Damage doubled')
+        playerDamage *= 2
+        console.log('Damage doubled' + playerDamage)
       }
       break;
     }
