@@ -138,6 +138,11 @@ h1{
         height: 150px;
         width: 150px;
     }
+    .btn-cont{
+        flex-direction: column;  
+        justify-content: start;
+        gap: 10px;
+    }
   }
 @media (max-width: 540px) {
     .player{
@@ -147,5 +152,10 @@ h1{
     .enemy{
         height: 100px;
         width: 100px;
+    }
+    .btn-cont{
+        flex-direction: column;  
+        justify-content: start;
+        gap: 10px;
     }
   }
