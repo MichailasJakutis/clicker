@@ -131,12 +131,12 @@ h1{
 }
 @media (max-width: 740px) {
     .player{
-        height: 200px;
-        width: 200px;
+        height: 150px;
+        width: 150px;
     }
     .enemy{
-        height: 200px;
-        width: 200px;
+        height: 150px;
+        width: 150px;
     }
   }
 @media (max-width: 540px) {
