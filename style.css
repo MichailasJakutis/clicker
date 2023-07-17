@@ -159,3 +159,36 @@ h1{
         gap: 10px;
     }
   }
+  .inventory{
+    background-color: brown;
+  }
+  .inventory-wrapper{
+    background-color: rgb(165, 42, 42);
+    width: 400px;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+  }
+  .open-popup{
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .popupBtn{
+    margin-bottom: -50%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  
+
+
+  }

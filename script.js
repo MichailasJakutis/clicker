@@ -40,6 +40,10 @@ const levelElement = document.querySelector('.level')
 const resGold = document.querySelector('.res-gold')
 const resLvl = document.querySelector('.res-level')
 const resMonsterIndex = document.querySelector('.res-monster-index')
+const inventoryBtn = document.querySelector('.inventory')
+const inventoryContainer = document.querySelector('.inventory-wrapper')
+const closePopBtn = document.querySelector('.popupBtn')
+
 
 
   gameOver.style.display = 'none'
@@ -58,7 +62,7 @@ const resMonsterIndex = document.querySelector('.res-monster-index')
   bowElement.style.border = 'none'
   staffElement.style.border = 'none'
   indexElement.textContent = `Monsters: ${monsterIndex}`
-
+  inventoryBtn.textContent = 'Inventory'
  
  
   btn.onclick = () => { 
@@ -187,8 +191,16 @@ const resMonsterIndex = document.querySelector('.res-monster-index')
     }
   }
 
-   
+  function openPopup(){
+    inventoryContainer.classList.add('open-popup')
+  }
+  function closePopup(){
+    inventoryContainer.classList.remove('open-popup')
+  }
 
+
+  inventoryBtn.onclick = () => {openPopup()}
+  closePopBtn.onclick = () => {closePopup()}
 
 
 
