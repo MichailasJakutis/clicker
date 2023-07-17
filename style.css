@@ -129,3 +129,23 @@ h1{
 .npc{
     color: rgb(248, 218, 46)
 }
+@media (max-width: 740px) {
+    .player{
+        height: 200px;
+        width: 200px;
+    }
+    .enemy{
+        height: 200px;
+        width: 200px;
+    }
+  }
+@media (max-width: 540px) {
+    .player{
+        height: 100px;
+        width: 100px;
+    }
+    .enemy{
+        height: 100px;
+        width: 100px;
+    }
+  }
